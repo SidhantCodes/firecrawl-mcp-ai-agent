@@ -34,3 +34,29 @@ class ResearchState(BaseModel):
     companies: List[CompanyInfo] = []
     search_results: List[Dict[str, Any]] = []
     analysis: Optional[str] = None
+
+
+
+# Request model
+class QueryRequest(BaseModel):
+    query: str
+
+# Response models
+class CompanyInfoResponse(BaseModel):
+    name: str
+    description: str
+    website: str
+    pricing_model: Optional[str]
+    is_open_source: Optional[bool]
+    tech_stack: List[str]
+    competitors: List[str]
+    api_available: Optional[bool]
+    language_support: List[str]
+    integration_capabilities: List[str]
+    developer_experience_rating: Optional[str]
+
+class ResearchResponse(BaseModel):
+    query: str
+    extracted_tools: List[str]
+    companies: List[CompanyInfoResponse]
+    analysis: Optional[str]
